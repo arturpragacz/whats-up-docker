@@ -234,20 +234,22 @@ export default {
 
     newVersionClass() {
       let color = "warning";
-      if (
-        this.container.updateKind &&
-        this.container.updateKind.kind === "tag"
-      ) {
-        switch (this.container.updateKind.semverDiff) {
-          case "major":
-            color = "error";
-            break;
-          case "minor":
-            color = "warning";
-            break;
-          case "patch":
-            color = "success";
-            break;
+      if (this.container.updateKind) {
+        if (this.container.updateKind.kind === "digest") {
+          color = "accent"
+        }
+        else if (this.container.updateKind.kind === "tag") {
+          switch (this.container.updateKind.semverDiff) {
+            case "major":
+              color = "error";
+              break;
+            case "minor":
+              color = "warning";
+              break;
+            case "patch":
+              color = "success";
+              break;
+          }
         }
       }
       return color;
