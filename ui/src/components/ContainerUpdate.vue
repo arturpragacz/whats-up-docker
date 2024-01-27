@@ -46,7 +46,10 @@
       </v-list-item>
       <v-list-item>
         <v-list-item-avatar>
-          <v-icon v-if="updateKind.semverDiff === 'patch'" color="success"
+          <v-icon v-if="updateKind.kind === 'digest'" color="accent"
+            >mdi-alert</v-icon
+          >
+          <v-icon v-else-if="updateKind.semverDiff === 'patch'" color="success"
             >mdi-information</v-icon
           >
           <v-icon v-else-if="updateKind.semverDiff === 'major'" color="error"
